@@ -44,6 +44,11 @@ jobs:
 #      uses: azure/login@v1
 #      with:
 #        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+- name: test
+  echo ${{ secrets.AZURE_CREDENTIALS }}
+  echo test
+  
     - name: Azure Login
       uses: azure/login@v1.1
       with:
