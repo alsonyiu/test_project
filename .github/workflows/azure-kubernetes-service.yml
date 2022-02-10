@@ -48,8 +48,8 @@ jobs:
       with:
         azcliversion: 2.29.1
         inlineScript: |
-          az configure --defaults acr=${{ env.AZURE_CONTAINER_REGISTRY }}
-          az acr build -t  -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.PROJECT_NAME }}:${{ github.sha }}
+          az configure --defaults acr=acraksiert6h4eouwsq
+          az acr build -t  -t acraksiert6h4eouwsq.azurecr.io/weaveworks/kured:${{ github.sha }}
     
     - name: Gets K8s context
       uses: azure/aks-set-context@v1
@@ -75,6 +75,6 @@ jobs:
       with:
         manifests: ${{ steps.bake.outputs.manifestsBundle }}
         images: |
-          acraksiert6h4eouwsq.azurecr.io/my_app:alson_test
+          acraksiert6h4eouwsq.azurecr.io/weaveworks/kured:${{ github.sha }}
         imagepullsecrets: |
           my_app
