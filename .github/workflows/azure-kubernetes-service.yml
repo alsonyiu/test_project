@@ -30,8 +30,10 @@
 # https://github.com/Azure/k8s-bake
 # https://github.com/Azure/k8s-deploy   
 
-on: [push]
-
+on:
+  push:
+  workflow_dispatch:
+  
 jobs:
   build:
     runs-on: ubuntu-latest
