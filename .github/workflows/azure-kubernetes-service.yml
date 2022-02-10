@@ -55,8 +55,8 @@ jobs:
       uses: azure/aks-set-context@v1
       with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-          resource-group: ${{ env.RESOURCE_GROUP }}
-          cluster-name: ${{ env.CLUSTER_NAME }}
+          resource-group: rg-bu0001a0008
+          cluster-name: aks
       id: login
 
     - name: Configure deployment
@@ -75,6 +75,6 @@ jobs:
       with:
         manifests: ${{ steps.bake.outputs.manifestsBundle }}
         images: |
-          ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.PROJECT_NAME }}:${{ github.sha }}
+          acraksiert6h4eouwsq.azurecr.io/my_app:alson_test
         imagepullsecrets: |
-          ${{ env.PROJECT_NAME }}
+          my_app
