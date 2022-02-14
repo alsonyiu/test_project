@@ -52,14 +52,18 @@ jobs:
 #        creds: ${{ secrets.AZURE_CREDENTIALS }}  
     
     
-    - name: Build image on ACR
-      uses: azure/CLI@v1
-      with:
-        azcliversion: 2.29.1
-        inlineScript: |
-          az configure --defaults acr=acraksiert6h4eouwsq
-          az acr build . -t acraksiert6h4eouwsq.azurecr.io/weaveworks/kured:${{ github.sha }}
-    
+#   - name: Build image on ACR
+#     uses: azure/CLI@v1
+#      with:
+#        azcliversion: 2.29.1
+#        inlineScript: |
+#          az configure --defaults acr=acraksiert6h4eouwsq
+#          az acr build . -t acraksiert6h4eouwsq.azurecr.io/weaveworks/kured:${{ github.sha }}
+    -  name: Build image
+       run: |
+        docker build . -t acraksiert6h4eouwsq.azurecr.io/weaveworks/kured${{ github.sha }}
+        docker push acraksiert6h4eouwsq.azurecr.io/weaveworks/kured:${{ github.sha }}
+
     - name: Gets K8s context
       uses: azure/aks-set-context@v1
       with:
